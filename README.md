@@ -32,4 +32,4 @@ To view your changes, just type:
 
 ## Build
 
-The Grunt tasks will compile a test ready version of the project for you. in the '/builds/development' directory (with SASS source mapping.)
+The Gulp tasks will compile a test ready version of the project for you. in the '/builds/development' directory (with SASS source mapping.)

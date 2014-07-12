@@ -6,6 +6,7 @@ A simple boilerplate for Gulp workflow that includes:
 - static server with automatic live reload
 - jade compilation
 - sass compilation
+- system notification 
 
 ...for now.
 

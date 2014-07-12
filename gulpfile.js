@@ -1,6 +1,7 @@
 var gulp = require('gulp'),
 	jade = require('gulp-jade'),
 	sass = require('gulp-sass'),
+	notify = require('gulp-notify'),
 	connect = require('gulp-connect');
 
 gulp.task('jade', function(){
@@ -14,6 +15,7 @@ gulp.task('sass', function(){
 	return gulp.src('src/sass/main.scss')
 		.pipe(sass({sourceComments: 'map', sourceMap: 'sass'}))
 		.pipe(gulp.dest('builds/development/css'))
+		.pipe(notify({ message: 'Sass compile: All done!'}))
 		.pipe(connect.reload());
 });
 

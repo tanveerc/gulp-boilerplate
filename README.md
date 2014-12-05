@@ -25,7 +25,7 @@ To view your changes, just type:
 ``` gulp ```
 
 
-Then head to `locahost:9090`. Gulp will compile your Sass / Jade files as you edit them, refreshing your browser automatically.
+Then head to `locahost:9090`. Gulp will compile your files as you edit them, refreshing your browser automatically.
 
 
 

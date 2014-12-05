@@ -22,7 +22,10 @@ All source files are located in the `src/` directory. You should only be making 
 
 To view your changes, just type:
 
-```gulp```
+```npm install```
+
+
+## Making Changes
 
 
 Then head to `locahost:9090`. Gulp will compile your Sass / Jade files as you edit them, refreshing your browser automatically.

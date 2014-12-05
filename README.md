@@ -22,7 +22,7 @@ All source files are located in the `src/` directory. You should only be making 
 
 To view your changes, just type:
 
-```npm install```
+```gulp```
 
 
 ## Making Changes

@@ -4,11 +4,8 @@
 A simple boilerplate for Gulp workflow that includes:
 
 - static server with automatic live reload
-- jade compilation
 - sass compilation
-- system notification 
 
-...for now.
 
 ------
 
@@ -27,7 +24,7 @@ To view your changes, just type:
 
 ```gulp```
 
-...and head to `locahost:9000`. Gulp will compile your Sass / Jade files as you edit them, refreshing your browser automatically.
+...and head to `locahost:9090`. Gulp will compile your Sass / Jade files as you edit them, refreshing your browser automatically.
 
 
 

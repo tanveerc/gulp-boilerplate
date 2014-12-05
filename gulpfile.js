@@ -1,35 +1,52 @@
 var gulp = require('gulp'),
-	jade = require('gulp-jade'),
 	sass = require('gulp-sass'),
-	notify = require('gulp-notify'),
+	// notify = require('gulp-notify'),
 	connect = require('gulp-connect');
 
-gulp.task('jade', function(){
-	return gulp.src('src/templates/**/*.jade')
-		.pipe(jade())
-		.pipe(gulp.dest('builds/development'))
+var base = {
+	src: '_src/',
+	dist: 'builds/development/'
+}
+
+// tasks
+gulp.task('sass', function(){
+	return gulp.src('_src/styles/styles.scss')
+		.pipe(sass({sourceComments: 'map', sourceMap: 'sass'}))
+		.pipe(gulp.dest(base.dist + 'css'))
+		// .pipe(notify({ message: 'Sass compile: All done!'}))
 		.pipe(connect.reload());
 });
 
-gulp.task('sass', function(){
-	return gulp.src('src/sass/main.scss')
-		.pipe(sass({sourceComments: 'map', sourceMap: 'sass'}))
-		.pipe(gulp.dest('builds/development/css'))
-		.pipe(notify({ message: 'Sass compile: All done!'}))
+gulp.task('copy', function(){
+	// html
+	gulp.src('_src/**/*.html')
+		.pipe(gulp.dest(base.dist))
 		.pipe(connect.reload());
+	// images
+	gulp.src('_src/images/**/*.*')
+		.pipe(gulp.dest(base.dist + 'images'));
+	// fonts
+	gulp.src('_src/fonts/*.*')
+		.pipe(gulp.dest(base.dist + 'fonts'));
+	// js
+	gulp.src('_src/scripts/*.*')
+		.pipe(gulp.dest(base.dist + 'js'));
 });
 
 gulp.task('watch', function(){
-	gulp.watch('src/templates/**/*.jade', ['jade']);
-	gulp.watch('src/sass/**/*.scss', ['sass']);
+	gulp.watch('_src/styles/**/*.scss', ['sass']);
+	gulp.watch('_src/**/*.html', ['copy']);	
+	gulp.watch('_src/scripts/*.*', ['copy']);
+	gulp.watch('_src/images/**/*.*', ['copy']);
+	gulp.watch('_src/fonts/*.*', ['copy']);				
 });
 
 gulp.task('connect', function(){
 	connect.server({
-		root: 'builds/development',
-		port: 9000,
+		root: base.dist,
+		port: 9090,
     	livereload: true
 	});
 });
 
-gulp.task('default', ['jade', 'sass', 'connect', 'watch']);
+gulp.task('default', ['sass', 'copy', 'connect', 'watch']);
